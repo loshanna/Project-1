@@ -52,17 +52,18 @@ public class Input
 		course = courseInfo[0];
 		semester = courseInfo[1];
 		year = courseInfo[2];
-		
-		header =  new ArrayList<String>(Arrays.asList(scan.nextLine().split(",")));
+		year = year.substring(0, year.indexOf('.'));
 
+		header =  new ArrayList<String>(Arrays.asList(scan.nextLine().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1)));
 		makeStudents();
 	}
 	
 	public void makeStudents()
 	{	
-		while(scan.hasNextLine())
+  		while(scan.hasNextLine())
 		{
-			temp = scan.nextLine().split(",");
+  			
+			temp = scan.nextLine().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			students.add(new Student(temp, header, course, semester, year));
 			studentCount++;
 		}
@@ -70,6 +71,7 @@ public class Input
 		System.out.println("Students added: " + (studentCount - studentCountCurrent));
 		System.out.println("Students already in database: " + studentCountCurrent);
 		studentCountCurrent = studentCount;
+		System.out.println("Students now in the database: " + studentCountCurrent);
 	}
 	
 

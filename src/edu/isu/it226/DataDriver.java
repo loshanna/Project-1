@@ -10,6 +10,7 @@
 */
 package edu.isu.it226;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -22,6 +23,8 @@ public class DataDriver
 {
 	Scanner input = new Scanner(System.in);
 	Input i = new Input();
+	Output o = new Output();
+	
 	
 	
 	
@@ -29,9 +32,151 @@ public class DataDriver
 	//TestMethod for now
 	private void generate()
 	{
-		i.getInput("226-fall-1996.csv");
+		System.out.println("Please enter in the name of the file you would like to add:");
+		String file = input.next();
+		i.getInput(file);
+		
 	}
 	
+	private void gradeCheck()
+	{
+		System.out.println("Please enter in course number, or enter in none");
+		String course = input.next(); 
+		System.out.println("Please enter in semester, or enter in none");
+		String semester = input.next();
+		String year = "";
+		if(!semester.equals("none"))
+		{
+			System.out.println("Please enter in year, or enter in none");
+			 year = input.next();
+		}
+		
+		
+		
+		ArrayList<Student> students = i.students;
+		int[] output = new int[5];
+		
+		if(course.equals("none") && semester.equals("none"))
+		{
+			return;
+		}
+		else if(course.equals("none"))
+		{
+			for (int i = 0; i < students.size(); i++)
+			{
+				if(students.get(i).getSemester().equals(semester) && students.get(i).getYear().equals(year))
+				{
+					if(students.get(i).getGrade().equals("A"))
+					{
+						output[0]++;
+					}
+					else if(students.get(i).getGrade().equals("B"))
+					{
+						output[1]++;
+					}
+					else if(students.get(i).getGrade().equals("C"))
+					{
+						output[2]++;
+					}
+					else if(students.get(i).getGrade().equals("D"))
+					{
+						output[3]++;
+					}
+					else if(students.get(i).getGrade().equals("F"))
+					{
+						output[4]++;
+					}
+				}
+			}
+		}
+		else if(semester.equals("none"))
+		{
+			for (int i = 0; i < students.size(); i++)
+			{
+				if(students.get(i).getCourse().equals(course))
+				{
+					if(students.get(i).getGrade().equals("A"))
+					{
+						output[0]++;
+					}
+					else if(students.get(i).getGrade().equals("B"))
+					{
+						output[1]++;
+					}
+					else if(students.get(i).getGrade().equals("C"))
+					{
+						output[2]++;
+					}
+					else if(students.get(i).getGrade().equals("D"))
+					{
+						output[3]++;
+					}
+					else if(students.get(i).getGrade().equals("F"))
+					{
+						output[4]++;
+					}
+				}
+			}
+		
+		
+		
+		}
+		else
+		{
+			for (int i = 0; i < students.size(); i++)
+			{
+				if(students.get(i).getCourse().equals(course) && students.get(i).getSemester().equals(semester) && students.get(i).getYear().equals(year))
+				{
+					if(students.get(i).getGrade().equals("A"))
+					{
+						output[0]++;
+					}
+					else if(students.get(i).getGrade().equals("B"))
+					{
+						output[1]++;
+					}
+					else if(students.get(i).getGrade().equals("C"))
+					{
+						output[2]++;
+					}
+					else if(students.get(i).getGrade().equals("D"))
+					{
+						output[3]++;
+					}
+					else if(students.get(i).getGrade().equals("F"))
+					{
+						output[4]++;
+					}
+				}
+			}
+		}
+		
+		System.out.println("A's: " + output[0]);
+		System.out.println("B's: " + output[1]);
+		System.out.println("C's: " + output[2]);
+		System.out.println("D's: " + output[3]);
+		System.out.println("F's: " + output[4]);
+	}
+	
+	
+	
+	public void write()
+	{
+		System.out.println("Please enter in the student ID");
+		String id = input.next();
+		ArrayList<Student> students = i.students;
+//		System.out.println(students.size());
+		for (int i = 0; i < students.size() ; i++)
+		{
+			System.out.println(students.get(i).toString());
+			if(students.get(i).getId().equals(id))
+			{
+				
+				o.write(students.get(i).toString());
+			}
+		}
+//		o.write("yes");
+	}
 	
 	//Generates menu
 	private void menu()
@@ -50,14 +195,18 @@ public class DataDriver
 		else if (choice.equals("s"))
 		{
 			//TODO: Set up save data function(s)
+			o.initialize();
+			write();
 		}
 		else if (choice.equals("g"))
 		{
 			//TODO: Set up get grade function(s)
+			gradeCheck();
 		}
 		else if (choice.equals("e"))
 		{
 			System.out.println("Goodbye!");
+			o.finish();
 			return;
 		}
 		else
@@ -74,6 +223,8 @@ public class DataDriver
 	{
 		DataDriver driver = new DataDriver();
 		driver.menu();
+		
+		
 	}
 
 }

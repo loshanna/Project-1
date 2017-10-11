@@ -25,11 +25,7 @@ public class DataDriver
 	Input i = new Input();
 	Output o = new Output();
 	
-	
-	
-	
-	
-	//TestMethod for now
+
 	private void generate()
 	{
 		System.out.println("Please enter in the name of the file you would like to add:");
@@ -37,7 +33,7 @@ public class DataDriver
 		i.getInput(file);
 		
 	}
-	
+	//TODO: Ask rishi about semester and year input
 	private void gradeCheck()
 	{
 		System.out.println("Please enter in course number, or enter in none");
@@ -144,7 +140,7 @@ public class DataDriver
 						output[3]++;
 					}
 					else if(students.get(i).getGrade().equals("F"))
-					{
+					{	
 						output[4]++;
 					}
 				}
@@ -158,24 +154,30 @@ public class DataDriver
 		System.out.println("F's: " + output[4]);
 	}
 	
-	
-	
 	public void write()
 	{
 		System.out.println("Please enter in the student ID");
 		String id = input.next();
 		ArrayList<Student> students = i.students;
-//		System.out.println(students.size());
+
 		for (int i = 0; i < students.size() ; i++)
 		{
-			System.out.println(students.get(i).toString());
 			if(students.get(i).getId().equals(id))
 			{
-				
 				o.write(students.get(i).toString());
 			}
 		}
-//		o.write("yes");
+
+	}
+	
+	public void finish()
+	{
+		if(input != null)
+		{
+			input.close();
+		}
+		o.finish();
+		i.finish();
 	}
 	
 	//Generates menu
@@ -189,31 +191,27 @@ public class DataDriver
 		String choice = input.next();
 		if (choice.equals("a"))
 		{
-			//TODO: Set up add data function(s)
 			generate();
 		}
 		else if (choice.equals("s"))
 		{
-			//TODO: Set up save data function(s)
 			o.initialize();
 			write();
 		}
 		else if (choice.equals("g"))
 		{
-			//TODO: Set up get grade function(s)
 			gradeCheck();
 		}
 		else if (choice.equals("e"))
 		{
 			System.out.println("Goodbye!");
-			o.finish();
+			finish();
 			return;
 		}
 		else
 		{
 			System.out.println("Invalid input, please try again");
 			menu();
-			System.out.println("menu error");
 			return;
 		}
 		menu();

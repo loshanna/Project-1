@@ -27,19 +27,23 @@ public class Output
 	
 	public void initialize()
 	{
+		
+		//TODO: Change to user based input
 		try
 		{
 			output = new PrintWriter("Students.csv");
 		}
 		catch (FileNotFoundException e)
 		{
-			e.printStackTrace();
+			System.out.println("Incorrect file path");
+			return;
 		}	
 	}
 	
 	public void write(String data)
 	{
 		output.write(data);
+		
 	}
 	
 	public void finish()

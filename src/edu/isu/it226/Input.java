@@ -73,7 +73,14 @@ public class Input
 		studentCountCurrent = studentCount;
 		System.out.println("Students now in the database: " + studentCountCurrent);
 	}
-	
+
+	public void finish()
+	{
+		if(scan != null)
+		{
+			scan.close();
+		}
+	}
 
 		
 	

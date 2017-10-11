@@ -20,23 +20,23 @@ import java.util.ArrayList;
  */
 public class Student
 {
-	int nameCount = 0;
-	int nameIndex1 = -1;
-	int nameIndex2 = -1;
-	int idIndex = -1;
-	int gradeIndex = -1;
-	ArrayList<String> header;
-	String[] data;
-	String name;
-	String id;
-	String course;
-	String semester;
-	String year;
-	String grade;
-	ArrayList<String> assignments = new ArrayList<String>();
-	ArrayList<String> assignmentData = new ArrayList<String>();
+	private int nameCount = 0;
+	private int nameIndex1 = -1;
+	private int nameIndex2 = -1;
+	private int idIndex = -1;
+	private int gradeIndex = -1;
+	private ArrayList<String> header;
+	private String[] data;
+	private String name;
+	private String id;
+	private String course;
+	private String semester;
+	private String year;
+	private String grade;
+	private ArrayList<String> assignments = new ArrayList<String>();
+	private ArrayList<String> assignmentData = new ArrayList<String>();
 	
-	boolean idFound = false;
+	private boolean idFound = false;
 	
 
 	
@@ -109,6 +109,8 @@ public class Student
 		}
 	}
 	
+	
+	//TODO: Ask rishi about formatting issues
 	public String toString()
 	{
 		
@@ -139,100 +141,50 @@ public class Student
 		return nameCount;
 	}
 
-
-
-
-
-
 	public int getNameIndex1()
 	{
 		return nameIndex1;
 	}
-
-
-
-
-
 
 	public int getNameIndex2()
 	{
 		return nameIndex2;
 	}
 
-
-
-
-
-
 	public int getIdIndex()
 	{
 		return idIndex;
 	}
-
-
-
-
-
 
 	public int getGradeIndex()
 	{
 		return gradeIndex;
 	}
 
-
-
-
-
-
 	public ArrayList<String> getHeader()
 	{
 		return header;
 	}
-
-
-
-
-
 
 	public String[] getData()
 	{
 		return data;
 	}
 
-
-
-
-
-
 	public String getCourse()
 	{
 		return course;
 	}
-
-
-
-
-
 
 	public String getSemester()
 	{
 		return semester;
 	}
 
-
-
-
-
-
 	public String getYear()
 	{
 		return year;
 	}
-
-
-
-
-
 
 	public String getGrade()
 	{

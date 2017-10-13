@@ -33,7 +33,7 @@ public class DataDriver
 		i.getInput(file);
 		
 	}
-	//TODO: Ask rishi about semester and year input
+	
 	private void gradeCheck()
 	{
 		System.out.println("Please enter in course number, or enter in none");
@@ -154,9 +154,22 @@ public class DataDriver
 		System.out.println("F's: " + output[4]);
 	}
 	
+	
+	
+	public void getGrades()
+	{
+		System.out.println("Please enter the output file name:");
+		String choice = input.next();
+		boolean passed = o.initialize(choice);
+		if(passed)
+		{
+			write();
+		}
+	}
+	
 	public void write()
 	{
-		System.out.println("Please enter in the student ID");
+		System.out.println("Please enter in the student ID:");
 		String id = input.next();
 		ArrayList<Student> students = i.students;
 
@@ -195,8 +208,7 @@ public class DataDriver
 		}
 		else if (choice.equals("s"))
 		{
-			o.initialize();
-			write();
+			getGrades();
 		}
 		else if (choice.equals("g"))
 		{

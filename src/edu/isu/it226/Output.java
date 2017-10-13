@@ -25,18 +25,18 @@ public class Output
 	
 	PrintWriter output = null;
 	
-	public void initialize()
+	public boolean initialize(String filepath)
 	{
 		
-		//TODO: Change to user based input
 		try
 		{
-			output = new PrintWriter("Students.csv");
+			output = new PrintWriter(filepath);
+			return true;
 		}
 		catch (FileNotFoundException e)
 		{
 			System.out.println("Incorrect file path");
-			return;
+			return false;
 		}	
 	}
 	
